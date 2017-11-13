@@ -1,0 +1,252 @@
+@charset "utf-8";
+
+a:hover,a:focus{text-decoration:none}
+body{background-color:#dae1e8;font-family:'open_sansregular',sans-serif}
+#header{
+	position:relative;
+	display:block;
+	width:100%;
+	height:110px;
+	background-color:#153280;
+}
+#header img.p-logo{width:205px;height:auto;display:block}
+#logoDsktp{display:inline-block;width:auto;height:60px;margin:25px 0;vertical-align:top}
+#subLinks{display:inline-block;margin:30px 0;padding:0;float:right}
+#subLinks li{display:inline-block;margin:0;padding:0;color:#1060b0}
+#header #subLinks li{font-size:14px}
+#subLinks li a{padding:0 5px}
+#header ul#subLinks .header-username{color:#5fa7d3 !important}
+#subLinks li a:hover{color:#fff}
+.list-group a{color: #fff;}
+.list-group-item { display: block; line-height: 50px; padding-left: 40px; vertical-align: middle; }
+.list-group-item-action:hover{
+	-webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    font-weight: bold;
+}
+.bg-yale-blue { background-color: #16295f;}
+.bg-denim-blue { background-color: #1b3c96;}
+.bg-smurf-blue { background-color: #1060b0;}
+.bg-light-blue { background-color: #6495ed;}
+.main-content{ background-color: #fff; margin-left: 20px; padding-right: 0px; margin-right: 0px;}
+
+#fullWidth {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background: url('../images/loginbg_2.jpg') center top no-repeat #001627;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.form-horizontal .form-group {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+#fullWidth #loginForm img{position:relative ;width:80px;height:auto; top:-30px;left:0;right:0;margin:0 auto}
+
+#fullWidth #loginForm img{-webkit-animation-duration:1.3s;-webkit-animation-delay:.4s;-webkit-animation-iteration-count:1;-moz-animation-duration:1.3s;-moz-animation-delay:.4s;-moz-animation-iteration-count:1;-o-animation-duration:1.3s;-o-animation-delay:.4s;-o-animation-iteration-count:1;animation-duration:1.3s;animation-delay:.4s;animation-iteration-count:1}
+
+#fullWidth #loginForm p {
+    color: #fff;
+    font-family: 'titillium_weblight',sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+}
+
+.contentViewport p {
+    color: #545454;
+    font-size: 16px;
+    line-height: 24px;
+    font-style: normal;
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+#fullWidth #loginForm input {
+    background-color: #00225d;
+    border-color: #00286f;
+    color: #fff;
+    font-size: 15px;
+    padding-right: 10px;
+}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    min-width: 0;
+}
+
+fieldset {
+    display: block;
+    -webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+}
+
+.formView .secondaryFileData input, .formView .fileData input, .formView .fileData input, .formView .searchBoxNormal, .formView .searchBoxActive, .formView input.input-lg, .formView textarea.input-lg, .formView select.input-lg#selectmultiple {
+    height: 45px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,.075);
+    box-shadow: inset 0 0 0 rgba(0,0,0,.075);
+    -webkit-appearance: none;
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    padding: 10px 50px 10px 16px;
+}
+
+.input-lg {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input {
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 13.3333px Arial;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: rgb(250, 255, 189);
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+
+#fullWidth #loginForm .formView .form-group{margin-top:20px}
+
+#fullWidth .formView .form-horizontal .control-label,#fullWidth .formView label{font-size:14px;text-align:left !important;padding-bottom:0;line-height:26px;color:#b3b3b3}
+
+.formView .form-horizontal .control-label,.formView label{font-weight:400;font-size:16px;text-align:left !important;padding-bottom:0;overflow:hidden;text-overflow:ellipsis;color:#7d8080}
+.formView .form-horizontal .radio,.formView .form-horizontal .checkbox{min-height:auto}
+
+.contentViewport .leaderText{font-family:'open_sansregular',sans-serif;font-weight:normal}
+p{font-family:'open_sansregular',sans-serif;font-weight:normal}
+.contentViewport a{color:#004f9d;text-decoration:none}.contentViewport a:hover,.contentViewport a:focus{color:#000;text-decoration:underline}
+
+#fullWidth #loginForm{width:355px;display:block;padding:65px 35px 25px;margin:3% auto 10%;background-color:#001841;position:relative}
+#fullWidth #loginForm h1{font-size:26px;color:#fff;padding:0;margin:-15px 0 5px}
+#fullWidth #loginForm input:hover{border-color:#0c558f}
+#fullWidth #loginForm input:focus{border-color:#106cb4}
+#fullWidth #loginForm .alert{color:crimson;margin-bottom:0}
+#fullWidth #loginForm .btn.btn-primary{background-color:#65b921 !important;border:0;width:100% !important;font-size:16px;line-height:29px}
+#fullWidth #loginForm .btn.btn-primary:hover{background-color:#83d541 !important}#fullWidth #loginForm .frgtPass{margin:15px 0 0;padding:0}#fullWidth #loginForm .frgtPass li{display:inline}
+#fullWidth #loginForm .frgtPass li a{font-size:13px;color:#7c7c7c}
+@media only screen and (max-width:1170px){#fullWidth #loginForm{margin:10% auto 10%}}@media only screen and (max-width:500px){#fullWidth{background-image:none;position:relative}#fullWidth .footer{width:90%;max-width:100%;padding:0}#fullWidth .footer p{width:100%}
+#fullWidth #loginForm{margin-top: 50px; width:100% !important}}
+
+
+#myGroup{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #2a2a2a;
+}
+
+.accordion-group{
+	margin-top: 25px;
+}
+
+.card-body {
+	padding: 20px;
+}
+
+.btn {
+	cursor: pointer;
+}
+
+.tab-content{
+	background-color: #fff;
+}
+
+.ca{
+	margin-top: 25px
+}
+
+.input-group.md-form.form-sm.form-3 input {
+    border: 1px solid #00C851;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+.input-group.md-form.form-sm.form-3 input[type=text]:focus:not([readonly]).red-border  {
+    border: 1px solid #ef9a9a;
+    box-shadow: none;
+}
+.input-group.md-form.form-sm.form-3 input[type=text]:focus:not([readonly]).amber-border  {
+    border: 1px solid #ffca28;
+    box-shadow: none;
+}
+.input-group.md-form.form-sm.form-3 input[type=text]:focus:not([readonly]).blue-border  {
+    border: 1px solid #64b5f6;
+    box-shadow: none;
+}

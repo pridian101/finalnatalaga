@@ -1,0 +1,48 @@
+    <!-- Central Modal Medium Success -->
+    <div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+      <div class="modal-dialog modal-notify modal-success" role="document">
+        <!--Content-->
+        <div class="modal-content">
+          <!--Header-->
+          <div class="modal-header">
+            <p class="heading lead">Edit Student Record</p>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="white-text">&times;</span>
+            </button>
+          </div>
+
+          <!--Body-->
+          <div class="modal-body">
+          	<form id="editStudent">
+            <div class="input-group md-form form-sm form-3 pl-0">
+						    <span class="input-group-addon green lighten-3 white-text" id="basic-addon9">ID Number&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						    <input type="text" class="form-control mt-0 blue-border validate" id="esid" aria-describedby="basic-addon9" name="student_id">
+						</div>
+						<div class="input-group md-form form-sm form-3 pl-0">
+						    <span class="input-group-addon green lighten-3 white-text" id="basic-addon9">First Name&nbsp;&nbsp;&nbsp;</span>
+						    <input type="text" class="form-control mt-0 blue-border" id="efname" aria-describedby="basic-addon9" name="first_name">
+						</div>
+						<div class="input-group md-form form-sm form-3 pl-0">
+						    <span class="input-group-addon green lighten-3 white-text" id="basic-addon9">Middle Name</span>
+						    <input type="text" class="form-control mt-0 blue-border" id="emname" aria-describedby="basic-addon9" name="middle_name">
+						</div>
+						<div class="input-group md-form form-sm form-3 pl-0">
+						    <span class="input-group-addon green lighten-3 white-text" id="basic-addon9">Last Name&nbsp;&nbsp;&nbsp;</span>
+						    <input type="text" class="form-control mt-0 blue-border" id="elname" aria-describedby="basic-addon9" name="last_name">
+						    <input type="hidden" name="old_id" value="old_id">
+						    <input type="hidden" name="action" value="update">
+						</div>
+						</form>
+          </div>
+
+          <!--Footer-->
+          <div class="modal-footer justify-content-center">
+            <a type="button" id="save" class="btn btn-primary-modal" id="delete" data-dismiss="modal"><i class="fa fa-check-square-o" aria-hidden="true" id="save"></i> Save</a>
+                    <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal"><i class="fa fa-close" aria-hidden="true"></i> Cancel</a>
+          </div>
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
+    <!-- Central Modal Medium Success-->

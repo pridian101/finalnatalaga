@@ -1,0 +1,83 @@
+public function ListStudents() {
+			$query = "
+								SELECT 		grade_levels.grade, 
+											 		sections.section, 
+											 		students.student_id, students.first_name, students.middle_name, students.last_name
+			   				FROM 			sections
+			   				INNER JOIN grade_levels ON sections.grade_id = grade_levels.grade_id 
+			   				LEFT JOIN students ON sections.section_id = students.section_id
+			   				WHERE grade_levels.grade_id = 9
+			   				ORDER BY students.last_name asc
+			   			";
+			if($result = $this->conn->query($query)){
+		    while ($row = $result->fetch_assoc()) {
+		    	  $grade = $row['grade'];
+						$section = $row['section'];
+		        $student_list[$grade][$section][] = array(
+		        									  'student_id' => $row['student_id'], 
+		        									  'first_name' => $row['first_name'], 
+		        									  'middle_name' => $row['middle_name'], 
+		        									  'last_name' => $row['last_name']
+		        									);
+		  	}
+		  	$result->close();
+		  	return $student_list;
+		  } else {
+				printf('errno: %d, error: %s', $stmt->errno, $stmt->error);
+			}
+		}
+
+		------
+
+		echo "
+						    				<div class='tab-pane fade' id='$section' role='tabpanel'>
+													<table class='table table-sm display' id=''>
+													  <thead>
+													    <tr>
+													      <th>ID #</th>
+													      <th>Name</th>
+													    </tr>
+													  </thead>
+													  <tbody>
+											";
+
+
+
+
+											----
+
+
+
+
+																	    	foreach ($student_list as $grade => $sections) {
+						    		foreach ($sections as $section => $students) {
+						    			echo "
+						    				<div class='tab-pane fade' id='$section' role='tabpanel'>
+													<table class='table table-sm display' id=''>
+													  <thead>
+													    <tr>
+													      <th>ID #</th>
+													      <th>Name</th>
+													    </tr>
+													  </thead>
+													  <tbody>
+											";
+						    			foreach ($students as $key => $student) {
+						    				var_dump($student);
+										    echo "
+										    	<tr>
+											      <td>${student['student_id']}</td>
+											      <td>${student['last_name']}, ${student['first_name']} ${student['middle_name']}
+											      		<button type='button' class='btn btn-sm fa-2x danger-color float-right' data-toggle='modal' data-target='#modalConfirmDelete' data-id='${student['student_id']}'' data-f_name='${student['first_name']}'' data-m_name='${student['middle_name']}'' data-l_name='${student['last_name']}'><i class='fa fa-remove' aria-hidden='true'></i> Delete</button>
+											      		<button type='button' class='btn btn-sm fa-2x success-color float-right' data-toggle='modal' data-target='#centralModalSuccess' data-id='${student['student_id']}'' data-f_name='${student['first_name']}'' data-m_name='${student['middle_name']}'' data-l_name='${student['last_name']}''><i class='fa fa-edit' aria-hidden='true'></i> Edit</button>
+											      		<button type='button' class='btn btn-sm fa-2x info-color float-right'><i class='fa fa-eye' aria-hidden='true'></i> View Student Record</button>
+											      </td>
+											    </tr>
+											  ";
+											}
+											echo "
+														</tbody>
+													</table>
+												</div>";
+										}
+									}
