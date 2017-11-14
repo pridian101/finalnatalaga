@@ -1,4 +1,9 @@
 <?php
+	if (!isset($_SESSION['teacher_id'])) {
+		header("Location: login.php");
+	}
+	extract($_SESSION);
+
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 
@@ -25,7 +30,6 @@
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet">
 
   <!-- google font -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -51,7 +55,7 @@
 				<ul id="subLinks">
 					<li>
 						<span class="header-username">
-							<a href="/profile/show">Teacher Name</a>
+							<a href="#"><?php echo "$first_name $last_name"; ?></a>
 						</span>|
 					</li>
 					<li>
@@ -126,7 +130,7 @@
 												      <td>${student['last_name']} ${student['first_name']} ${student['middle_name']}
 												      		<button type='button' class='btn btn-sm fa-2x danger-color float-right' data-toggle='modal' data-target='#modalConfirmDelete' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-m_name='${student['middle_name']}' data-l_name='${student['last_name']}'><i class='fa fa-remove' aria-hidden='true'></i> Delete</button>
 												      		<button type='button' class='btn btn-sm fa-2x success-color float-right' data-toggle='modal' data-target='#centralModalSuccess' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-m_name='${student['middle_name']}' data-l_name='${student['last_name']}'><i class='fa fa-edit' aria-hidden='true'></i> Edit</button>
-												      		<button type='button' class='btn btn-sm fa-2x info-color float-right' data-id='${student['student_id']}' id='getUser'><i class='fa fa-eye' aria-hidden='true'></i> View Student Record</button>
+												      		<button type='button' class='btn btn-sm fa-2x info-color float-right' data-toggle='modal' data-target='#centralModalSm' data-load-url='partials/partial_getuser.php?student_id=${student['student_id']}' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-l_name='${student['last_name']}'><i class='fa fa-eye' aria-hidden='true'></i> View Student Record</button>
 												      </td>
 												    </tr>
 												  ";
@@ -146,43 +150,37 @@
 
   			<!-- modal content -->
 
-  			<!-- delete record -->
+  			<!-- PARTIAL delete record -->
 				<?php include 'partials/partial_delete.html'; ?>
 				<!-- /delete record -->
 
-				<!-- update record -->
+				<!-- PARTIAL update record -->
 				<?php include 'partials/partial_update.html'; ?>
 				<!-- /update record -->
 
 				<!-- view student record -->
-				<div id="view-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-				  <div class="modal-dialog"> 
-				     <div class="modal-content">  
-				   
-				        <div class="modal-header"> 
-				           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-				           <h4 class="modal-title">
-				           <i class="glyphicon glyphicon-user"></i> User Profile
-				           </h4> 
-				        </div> 
-				            
-				        <div class="modal-body">                     
-				           <div id="modal-loader" style="display: none; text-align: center;">
-				           <!-- ajax loader -->
-				           <img src="ajax-loader.gif">
-				           </div>
-				                            
-				           <!-- mysql data will be load here -->                          
-				           <div id="dynamic-content"></div>
-				        </div> 
-				                        
-				        <div class="modal-footer"> 
-				            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
-				        </div> 
-				                        
-				    </div> 
-				  </div>
-				</div>
+				<div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	        <div class="modal-dialog modal-lg" role="document">
+	        	<div class="modal-content">
+	        		<div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Student Score</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body" id="score">
+
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+            
+        		</div>
+	        </div>
+	      </div>
 				<!-- /view student record -->
 
   			<!-- /modal content -->
@@ -275,38 +273,15 @@
 			    });
 			}); 		
 		});
+		$('#centralModalSm').on('shown.bs.modal', function (event) {
+			var load_url = $(event.relatedTarget).data('load-url');
+			var id = $(event.relatedTarget).data('id');
+			var first_name = $(event.relatedTarget).data('f_name');
+			var last_name = $(event.relatedTarget).data('l_name');
+			$(this).find('.modal-body').load(load_url);
+			$(this).find('.modal-title').text(id + ' - ' + first_name + ' ' + last_name);
+		});
   });
-
-  // display user scores
-  $(document).on('click', '#getUser', function(e){
-  
-     e.preventDefault();
-  
-     var uid = $(this).data('id'); // get id of clicked row
-  
-     $('#dynamic-content').html(''); // leave this div blank
-     $('#modal-loader').show();      // load ajax loader on button click
- 
-     $.ajax({
-          url: 'getuser.php',
-          type: 'POST',
-          data: 'id='+uid,
-          dataType: 'html'
-     })
-     .done(function(data){
-          console.log(data); 
-          $('#dynamic-content').html(''); // blank before load.
-          $('#dynamic-content').html(data); // load here
-          $('#modal-loader').hide(); // hide loader  
-     })
-     .fail(function(){
-          $('#dynamic-content').html('<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
-          $('#modal-loader').hide();
-     });
-
-  });
-  //end of display users
-
 </script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
