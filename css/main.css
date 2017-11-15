@@ -333,5 +333,3 @@ p{font-family:'open_sansregular',sans-serif;font-weight:normal}
 
 .form-simple input[type=password]:focus:not([readonly]) + label {
   color: #4f4f4f; }
-
-  

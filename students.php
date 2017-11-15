@@ -1,6 +1,7 @@
 <?php
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+	//session_start();
+	// error_reporting(E_ALL);
+	// ini_set('display_errors', 1);
 	/**
 	* Student functions
 	*/
@@ -16,6 +17,7 @@
 		}
 
 		public function ListStudents() {
+			$tid = $_SESSION['teacher_id'];
 			$row = array();
 			$students = array();
 			$query = "
@@ -25,18 +27,21 @@
 			   				FROM 			sections
 			   				INNER JOIN grade_levels ON sections.grade_id = grade_levels.grade_id 
 			   				LEFT JOIN students ON sections.section_id = students.section_id
-			   				WHERE grade_levels.teacher_id = 30
+			   				WHERE grade_levels.teacher_id = $tid
 			   				ORDER BY grade_levels.grade asc, sections.section asc
 			   			";
 
 			if($result = $this->conn->query($query)){
-		    while ($row = $result->fetch_assoc()) {  
-		        $array[]=$row;
-			  }
+				if ($result->num_rows===0) {
+					return $students=0;
+				} else {
+			    while ($row = $result->fetch_assoc()) {  
+			        $array[]=$row;   
+				  }
+				}
 		  } else {
 				printf('errno: %d, error: %s', $this->conn->errno, $this->conn->error);
 			}
-
 			foreach ($array as $row)
 			{
 			   $students[$row['grade']][$row['section']][] = array(
@@ -48,8 +53,8 @@
 																												   	);
 			}
 			
-			$result->close();
-			return $students;
+				$result->close();
+				return $students;
 			}
 
 		public function UpdateStudent($test_data)

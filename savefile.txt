@@ -81,3 +81,19 @@ public function ListStudents() {
 												</div>";
 										}
 									}
+
+
+
+									  $quarter = array();
+  $quarter = array_column_recursive($students, 'date');
+  echo "<pre>";
+      print_r($quarter);
+      echo "</pre>";
+
+function array_column_recursive(array $haystack, $needle) {
+  $found = [];
+  array_walk_recursive($haystack, function($value, $key) use (&$found, $needle) {
+      if ($key == $needle)
+          $found[] = $value;
+  });
+  return $found;

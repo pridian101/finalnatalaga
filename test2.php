@@ -21,48 +21,37 @@
 </head>
 <body>
 <!-- Form login -->
-<section class="form-simple">
-
-    <!--Form with header-->
-    <div class="card">
-
-        <!--Header-->
-        <div class="header pt-3 grey lighten-2">
-
-            <div class="row d-flex justify-content-start">
-                <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Log in</h3>
-            </div>
-
-        </div>
-        <!--Header-->
-
-        <div class="card-body mx-4 mt-4">
-
-            <!--Body-->
-            <div class="md-form">
-                <input type="text" id="Form-email4" class="form-control">
-                <label for="Form-email4">Your email</label>
-            </div>
-
-            <div class="md-form pb-3">
-                <input type="password" id="Form-pass4" class="form-control">
-                <label for="Form-pass4">Your password</label>
-                <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="#" class="dark-grey-text font-bold ml-1"> Password?</a></p>
-            </div>
-
-            <div class="text-center mb-4">
-                <button type="button" class="btn btn-danger btn-block z-depth-2">Log in</button>
-            </div>
-            <p class="font-small grey-text d-flex justify-content-center">Don't have an account? <a href="#" class="dark-grey-text font-bold ml-1"> Sign up</a></p>
-
-        </div>
-
-    </div>
-    <!--/Form with header-->
-
-</section>
-<!-- Form login -->
+<div class="row"><div class="container">
+<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+  Tooltip on top
+</button>
+<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+  Tooltip on right
+</button>
+<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+  Tooltip on bottom
+</button>
+<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+  Tooltip on left
+</button>
 </div></div>
+
+
+            
+<!-- HTML to write -->
+<a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
+
+<!-- Generated markup by the plugin -->
+<div class="tooltip top" role="tooltip">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner">
+    Some tooltip text!
+  </div>
+</div>
+
+<script>
+    $('button').tooltip(options)
+</script>
                 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>

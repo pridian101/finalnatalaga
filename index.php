@@ -89,16 +89,20 @@
 									<li class="nav-item">
 						        <a class="nav-link waves-light active" id="home-tab" data-toggle="tab" href="#nav-home" role="tab">Home</a>
 						      </li>
+
 		  						<?php
-							    	foreach ($student_list as $grade => $value) {
-							    		foreach ($value as $section => $students) {
-									    	echo "
-									    				<li class='nav-item'>
-									    				<a class='nav-link waves-light' data-toggle='tab' href='#$grade$section' role='tab'>$grade - $section</a>
-									    				</li>
-									    	";
-									    }
-									  }
+
+			  						if ($student_list!==0) {  						
+								    	foreach ($student_list as $grade => $value) {
+								    		foreach ($value as $section => $students) {
+										    	echo "
+										    				<li class='nav-item'>
+										    				<a class='nav-link waves-light' data-toggle='tab' href='#$grade$section' role='tab'>$grade - $section</a>
+										    				</li>
+										    	";
+										    }
+										  }
+										}
 									?>
 								</ul>
 							</div>
@@ -108,37 +112,41 @@
 	      					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								</div>
 						    <?php
-						    	foreach ($student_list as $grades => $grade) {
-
-						    		foreach ($grade as $sections => $section) {
-												    			
-						    			echo "
-						    				<div class='tab-pane fade' id='$grades$sections' role='tabpanel'>
-													<table class='table table-sm display' id=''>
-													  <thead>
-													    <tr>
-													      <th>ID #</th>
-													      <th>Name</th>
-													    </tr>
-													  </thead>
-													  <tbody>
-											";
-						    			foreach ($section as $students => $student) {
+						    	if ($student_list!==0) {
+							    	foreach ($student_list as $grades => $grade) {
+							    		foreach ($grade as $sections => $section) {
 							    			echo "
-											    	<tr>
-												      <td>${student['student_id']}</td>
-												      <td>${student['last_name']} ${student['first_name']} ${student['middle_name']}
-												      		<button type='button' class='btn btn-sm fa-2x danger-color float-right' data-toggle='modal' data-target='#modalConfirmDelete' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-m_name='${student['middle_name']}' data-l_name='${student['last_name']}'><i class='fa fa-remove' aria-hidden='true'></i> Delete</button>
-												      		<button type='button' class='btn btn-sm fa-2x success-color float-right' data-toggle='modal' data-target='#centralModalSuccess' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-m_name='${student['middle_name']}' data-l_name='${student['last_name']}'><i class='fa fa-edit' aria-hidden='true'></i> Edit</button>
-												      		<button type='button' class='btn btn-sm fa-2x info-color float-right' data-toggle='modal' data-target='#centralModalSm' data-load-url='partials/partial_getuser.php?student_id=${student['student_id']}' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-l_name='${student['last_name']}'><i class='fa fa-eye' aria-hidden='true'></i> View Student Record</button>
-												      </td>
-												    </tr>
-												  ";
-												}
-											echo "
-														</tbody>
-													</table>
-												</div>";
+							    				<div class='tab-pane fade' id='$grades$sections' role='tabpanel'>";
+							    				if($section[0]['student_id']!==NULL){
+							    					echo "<table class='table table-sm display' id=''>
+														  <thead>
+														    <tr>
+														      <th>ID #</th>
+														      <th>Name</th>
+														    </tr>
+														  </thead>
+														  <tbody>
+														";
+									    			foreach ($section as $students => $student) {
+										    			echo "
+														    	<tr>
+															      <td>${student['student_id']}</td>
+															      <td>${student['last_name']} ${student['first_name']} ${student['middle_name']}
+															      		<button type='button' class='btn btn-sm fa-2x danger-color float-right' data-toggle='modal' data-target='#modalConfirmDelete' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-m_name='${student['middle_name']}' data-l_name='${student['last_name']}'><i class='fa fa-remove' aria-hidden='true'></i> Delete</button>
+															      		<button type='button' class='btn btn-sm fa-2x success-color float-right' data-toggle='modal' data-target='#centralModalSuccess' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-m_name='${student['middle_name']}' data-l_name='${student['last_name']}'><i class='fa fa-edit' aria-hidden='true'></i> Edit</button>
+															      		<button type='button' class='btn btn-sm fa-2x info-color float-right' data-toggle='modal' data-target='#centralModalSm' data-load-url='partials/partial_getuser.php?student_id=${student['student_id']}' data-id='${student['student_id']}' data-f_name='${student['first_name']}' data-l_name='${student['last_name']}'><i class='fa fa-eye' aria-hidden='true'></i> View Student Record</button>
+															      </td>
+															    </tr>
+															  ";
+														}
+														echo "
+																	</tbody>
+																	</table>";
+													} else {
+														echo "No student records for this section yet";
+													}
+													echo "</div>";
+											}	
 										}
 									}
 								?>
@@ -160,32 +168,33 @@
 
 				<!-- view student record -->
 				<div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	        <div class="modal-dialog modal-lg" role="document">
+	        <div class="modal-dialog modal-fluid" role="document">
 	        	<div class="modal-content">
-	        		<div class="modal-header">
+	        		<div class="modal-header light-blue lighten-2 white-text">
                 <h4 class="modal-title" id="myModalLabel">Student Score</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-            </div>
-            <!--Body-->
-            <div class="modal-body" id="score">
+            	</div>
+	            <!--Body-->
+	            <div class="modal-body" id="score">
 
-            </div>
+	            </div>
             <!--Footer-->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-            
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+	            </div>
         		</div>
-	        </div>
+            
+        	</div>
 	      </div>
+	      
 				<!-- /view student record -->
 
   			<!-- /modal content -->
 			</div>
 		</div>
+
 
 
 <script>
@@ -278,9 +287,16 @@
 			var id = $(event.relatedTarget).data('id');
 			var first_name = $(event.relatedTarget).data('f_name');
 			var last_name = $(event.relatedTarget).data('l_name');
-			$(this).find('.modal-body').load(load_url);
 			$(this).find('.modal-title').text(id + ' - ' + first_name + ' ' + last_name);
+			$(this).find('.modal-body').load(load_url);
+			$('#1').tab('show');
+			$(function () {
+			  $('[data-toggle="popover"]').popover()
+			})
 		});
+
+		  
+
   });
 </script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
